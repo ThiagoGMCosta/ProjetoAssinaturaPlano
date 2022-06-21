@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mypilas</title>
+    <link rel="stylesheet" href="./css/bootstrap-grid.css">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/componentes.css">
+    <link rel="stylesheet" href="./css/layout.css">
+    
+    <link rel="stylesheet" th:href="@{/css/estilos.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap-grid.css}" />
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/componentes.css}" />
+    <link rel="stylesheet" th:href="@{/css/layout.css}" />
+    
+</head>
+<body>
+  <header class="layout-cabecalho layout-cabecalho--home">
+    <div class="container">
+
+        <nav class="barra-navegacao">   
+    <img src="./imagens/logo.png" width="100" height="35"
+        alt="projeto">
+        
+        <div class="navegacao__menu">
+        <button class="botao-chaveador js-botao"></button>
+
+            <ul class="menu js-menu">
+                
+                
+                <li class="menu-item menu-item-botao">
+                    <a th:href="@{/}" class="botao botao-login">Home</a>
+                </li>
+
+            </ul>
+
+        
+
+    </div>
+        
+    <div class="navegacao__menu">
+        <button class="botao-chaveador js-botao"></button>
+
+            <ul class="menu js-menu">
+                
+                
+                <li class="menu-item menu-item-botao">
+                    <a th:href="@{/contatos}" class="botao botao-login">Assinantes</a>
+                </li>
+
+            </ul>
+
+        
+
+    </div>
+    
+     
+    
+        </nav>
+    </div>
+</header>
+
+    <main class="layout-assinatura">
+        <div class="container">
+            <form th:action="${contato.novo} ? @{/contatos} : @{/contatos/{contato}(contato=${contato.id})}" 
+            th:object="${contato}" th:method="${contato.novo} ? POST : PUT">
+
+                <h1 class="titulo-formulario">Sua assinatura Mypilas </h1>
+
+                
+
+                <div class="grupo-entrada" >
+                    <label for="razao-social">Nome</label>
+                    <input id="razao-social" type="text" class="campo" th:field="*{nome}" required/>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-6">
+                      <div class="grupo-entrada">
+                        <label for="cnpj">CNPJ ou CPF</label>
+                        <input id="cnpj" name="cnpj" type="text" class="campo" th:field="*{cnpj}" required>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="grupo-entrada">
+                        <label for="data-nascimento">Data de fundação</label>
+                        <input id="data-nascimento" name="dataFundacao" type="date" class="campo" th:field="*{data}" required>
+                      </div>
+                    </div>
+                  </div>
+                  
+                      
+                <div class="grupo-entrada">
+                  <label for="responsavel">Telefone</label>
+                  <input id="responsavel" name="responsavel" type="text" class="campo" th:field="*{telefone}" required>
+                </div>
+      
+                <div class="grupo-entrada">
+                  <label for="email">E-mail</label>
+                  <input id="email" type="email" class="campo" th:field="*{email}" required>
+                </div>
+      
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="grupo-entrada">
+                      <label for="estado">Estado</label>
+                      <select id="estado" name="estado" class="campo">
+                        <option>Selecione</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="CE">Ceará</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div class="grupo-entrada">
+                      <label for="cidade">Cidade</label>
+                      <select id="cidade" class="campo" >
+                        <option>Selecione</option>
+                        <option value="1">Uberlândia</option>
+                        <option value="2">São Paulo</option>
+                        <option value="3">Fortaleza</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+      
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="grupo-entrada">
+                      <label for="senha">Senha</label>
+                      <input id="senha" type="password" class="campo" required>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div class="grupo-entrada">
+                      <label for="confirmacao-senha">Confirme a senha</label>
+                      <input id="confirmacao-senha" type="password" class="campo" required>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 40px;">
+                <input type="submit" value="assinar Mypilas" class="botao botao-principal"/>                
+                </div>
+
+                
+            </form>
+        </div>
+    </main>
+
+    <footer class="layout-rodape">
+        <div class="container">
+          <p>&copy; MyPilas. Todos os direitos reservados.</p>
+        </div>
+      </footer>
+    
+</body>
+</html>
