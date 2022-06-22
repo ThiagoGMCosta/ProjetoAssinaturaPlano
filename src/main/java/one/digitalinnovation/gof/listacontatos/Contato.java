@@ -21,10 +21,13 @@ public class Contato {
 		
 	}
 	
-	public Contato(String id, String nome, String telefone) {
+	public Contato(String id, String nome, String telefone, String cnpj, String email, String data) {
 		this.id = id;
 		this.nome = nome;
 		this.telefone = telefone;
+		this.cnpj = cnpj;
+		this.email = email;
+		this.data = data;
 	}
 	
 	public boolean isNovo() {
